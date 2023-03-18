@@ -1,0 +1,17 @@
+name: SMS Notifications
+on:
+  pull_request:
+
+jobs:
+  smsNotification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: alphaolomi/actions-africastalking@main
+        with:
+          fromPhoneNumber: 'INFO' # or secrets.fromPhoneNumber
+          toPhoneNumber: ${{ secrets.toPhoneNumber }}
+          message: 'Hello World'
+        env:
+          AT_API_KEY: ${{ secrets.AT_API_KEY }}
+          AT_USERNAME: ${{ secrets.AT_USERNAME }}`
